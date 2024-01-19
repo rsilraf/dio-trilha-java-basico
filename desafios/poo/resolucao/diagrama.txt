@@ -1,0 +1,49 @@
+@startuml
+enum EstadoMedia {
+  TOCANDO
+  EM_PAUSA
+}
+
+interface IReprodutorMedia {
+  tocar()
+  pausar()
+  selecionarMedia()
+}
+class ITunes implements IReprodutorMedia {
+  -estado: EstadoMedia
+  -mediaSelecionada: Media
+}
+ITunes --> EstadoMedia
+
+
+interface IAparelhoTelefonico {
+  ligar()
+  atender()
+  iniciarCorreioVoz()
+}
+class Telephone implements IAparelhoTelefonico {
+  -emChamada: boolean
+}
+
+interface INavegadorInternet {
+  exibirPagina()
+  atualizarPagina()
+  adicionarNovaAba()
+}
+class Safari implements INavegadorInternet{
+  -paginaAtual: PaginaWeb
+  -paginasCarregadas: PaginaWeb[]
+}
+IPhone *-- IReprodutorMedia
+IPhone *-- IAparelhoTelefonico
+IPhone *-- INavegadorInternet
+
+interface IIphone{
+  ligar()
+  bloquear()
+  desbloquear()
+  desligar()
+}
+class IPhone implements IIphone {
+}
+@enduml
